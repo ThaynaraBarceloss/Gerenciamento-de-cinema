@@ -36,7 +36,7 @@ router.get('/',async(req, res)=>{
         console.log(resultado)
         res.render('funcionario/index', {dados:resultado})
     }
-    else{
+    else{ // else
         console.log("Não foi possível exibir os dados")
     }
 })
