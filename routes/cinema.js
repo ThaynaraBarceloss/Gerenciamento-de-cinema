@@ -32,11 +32,11 @@ router.get('/show',(req, res)=>{
 router.get('/',async(req, res)=>{
     const resultado = await funcionario.findAll({include:departamento}) // o include\: departamento é como o sequelize faz para poder realizar consultas com join
 
-    if(resultado){
+    if(resultado){  // if indica condição 
         console.log(resultado)
         res.render('funcionario/index', {dados:resultado})
     }
-    else{ // else
+    else{ 
         console.log("Não foi possível exibir os dados")
     }
 })
