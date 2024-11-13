@@ -2,17 +2,17 @@ const express = require ('express')
 const router = express.Router()
 
 //IMPORTANDO AS TABELAS
-const funcionario = require('../models/filme')
-const departamento = require('../models/sessao')
+const sessao = require('../models/sessao')
+const filme = require('../models/filme')
 
 //CRIANDO AS ROTAS 
 //1ª ROTA - INSERIR DADOS NA TABELA
 router.post('/store',async(req, res)=>{
-    const resultado = await funcionario.create({
+    const resultado = await sessao.create({
         nome:req.body.nome,
         salario:req.body.salario,
         cargo:req.body.cargo,
-        departamentoId:req.body.sessao // Esse campo é a chave estrangeira
+        filmeId:req.body.sessao // Esse campo é a chave estrangeira
     })
 
     if(resultado){
@@ -30,11 +30,11 @@ router.get('/show',(req, res)=>{
 
 //3ª ROTA -  CONSULTAR DADOS DA TABELA
 router.get('/',async(req, res)=>{
-    const resultado = await funcionario.findAll({include:departamento}) // o include\: departamento é como o sequelize faz para poder realizar consultas com join
+    const resultado = await sessao.findAll({include:departamento}) // o include\: departamento é como o sequelize faz para poder realizar consultas com join
 
     if(resultado){  // if indica condição 
         console.log(resultado)
-        res.render('funcionario/index', {dados:resultado})
+        res.render('sessao/index', {dados:resultado})
     }
     else{ // else
         console.log("Não foi possível exibir os dados")
@@ -44,7 +44,7 @@ router.get('/',async(req, res)=>{
 // 4ª ROTA - DELETAR DADOS DA TABELA
 // :id significa que iremos passar um valor na rota, ou seja, iremos informar um valor que poderá ser diferente e que será armazenado pela variável :id
 router.get('/destroy/:id',async(req, res)=>{
-    const resultado = await funcionario.destroy({
+    const resultado = await sessao.destroy({
         where:{
             id:req.params.id // estamos recebendo o id via parâmetro que está sendo passado na rota, no caso,é o id que estamos recebendo
         }
@@ -54,13 +54,13 @@ router.get('/destroy/:id',async(req, res)=>{
 
 //5ª ROTA - EXIBIR FORMULÁRIO DE CADASTRO
 router.get('/create', async(req, res)=>{
-    let resultado = await departamento.findAll()
+    let resultado = await filme.findAll()
     
     if (resultado){
-        res.render('funcionario/addFuncionario', {dados:resultado})
+        res.render('sessao/addFuncionario', {dados:resultado})
     }
 
-    else{
+    else{   
         console.log('Não foi possível carregar os dados')
         res.redirect('/') // redirecionando para a página inicial
     }
