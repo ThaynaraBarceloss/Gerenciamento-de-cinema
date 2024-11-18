@@ -13,14 +13,14 @@ app.engine('handlebars',handlebars.engine({extended:true}))
 app.set('view engine', 'handlebars') // definindo o handlebars como mecanismo de visualização padrão.
 
 // CARREGAR AS PORTAS
-const cinemaRouter = require('./routes/cinema')
+const cinemaRouter = require('./routes/filmes')
 
 // UTILIZANDO AS ROTAS 
 app.use('/sessoes',cinemaRouter)
 
 app.get('/',(req, res)=>{
     console.log('funcionando o servidor')
-    res.send("<h1>Tudo funcionando</h1>")
+    res.render('index')
 })
 
 // EXECUTANDO O SERVIDOR

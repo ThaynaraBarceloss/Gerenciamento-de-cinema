@@ -1,13 +1,13 @@
-const sequelizeDb = require("sequelize")
-const sequelizeConfig = new sequelizeDb(
-    'cinema_db', 
-    'root', 
-    '',
+const {sequelizeDb, sequelizeConfig} = require('./database')
 
+//CRIANDO A TABELA
+const sessao = sequelizeConfig.define(
+    'sessao',
     {
-        dialect:'sqlite',
-        storage:'./empresa.sqlite'
+        data:{type:sequelizeDb.DATE},
+        horario: {type:sequelizeDb.TIME}
     }
 )
 
-module.exports = {sequelizeDb, sequelizeConfig}
+sessao.sync()
+module.exports = sessao 
