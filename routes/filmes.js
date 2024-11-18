@@ -6,13 +6,30 @@ const sessao = require('../models/sessao')
 const filme = require('../models/filme')
 
 //CRIANDO AS ROTAS 
-//1ª ROTA - INSERIR DADOS NA TABELA
-router.post('/store',async(req, res)=>{
+
+// ROTA DE INSERÇÃO DOS FILMES
+router.get('/storeSessao',async(req, res)=>{
     const resultado = await sessao.create({
-        nome:req.body.nome,
-        salario:req.body.salario,
-        cargo:req.body.cargo,
-        filmeId:req.body.sessao // Esse campo é a chave estrangeira
+        data:req.body.data,
+        horario:req.body.horario,
+        filmeId:req.body.filme // Esse campo é a chave estrangeira
+    })
+
+    if(resultado){
+        res.redirect('/')
+    }
+    else(
+        res.json({erro:"Os dados não foram cadastrados no banco"})
+    )
+})
+
+//1ª ROTA - INSERIR DADOS NA TABELA
+router.get('/store',async(req, res)=>{
+    const resultado = await sessao.create({
+        titulo:req.body.titulo,
+        genero:req.body.genero,
+        duracao:req.body.duracao,
+        filmeId:req.body.filme // Esse campo é a chave estrangeira
     })
 
     if(resultado){
@@ -57,7 +74,7 @@ router.get('/create', async(req, res)=>{
     let resultado = await filme.findAll()
     
     if (resultado){
-        res.render('sessao/addFuncionario', {dados:resultado})
+        res.render('sessao/addSessao', {dados:resultado})
     }
 
     else{   

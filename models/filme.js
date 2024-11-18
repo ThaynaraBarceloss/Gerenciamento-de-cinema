@@ -3,7 +3,7 @@ const {sequelizeDb, sequelizeConfig} = require('./database')
 const sessao = require('./sessao')
 
 const  filme = sequelizeConfig.define(
-    'filmes', 
+    'filme', 
     {
         titulo:{type:sequelizeDb.STRING},
         genero:{type:sequelizeDb.STRING},
@@ -12,12 +12,12 @@ const  filme = sequelizeConfig.define(
     }
 )
 
-filme.hasMany(sessao,{
-    onDelete:'CASCADE',
-    onUpdate:'CASCADE'
-})
+// filme.hasMany(sessao,{
+//     onDelete:'CASCADE',
+//     onUpdate:'CASCADE'
+// })
 
-sessao.belongsTo(filme)
+// sessao.belongsTo(filme)
 
 filme.sync()
 module.exports = filme

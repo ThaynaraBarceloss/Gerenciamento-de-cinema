@@ -6,7 +6,7 @@ const sequelizeConfig = new sequelizeDb(
 
     {
         dialect:'sqlite',
-        storage:'./cinema.sqlite'
+        storage:'./gerenciamentoCinema.sqlite'
     }
 )
 
