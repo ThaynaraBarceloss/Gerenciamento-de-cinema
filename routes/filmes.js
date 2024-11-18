@@ -12,7 +12,6 @@ router.get('/storeSessao',async(req, res)=>{
     const resultado = await sessao.create({
         data:req.body.data,
         horario:req.body.horario,
-        filmeId:req.body.filme // Esse campo é a chave estrangeira
     })
 
     if(resultado){
