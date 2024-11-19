@@ -8,7 +8,7 @@ const filme = require('../models/filme')
 //CRIANDO AS ROTAS 
 
 // ROTA DE INSERÇÃO DOS FILMES
-router.get('/storeSessao',async(req, res)=>{
+router.get('/criar',async(req, res)=>{
     const resultado = await sessao.create({
         data:req.body.data,
         horario:req.body.horario,
@@ -46,7 +46,7 @@ router.get('/show',(req, res)=>{
 
 //3ª ROTA -  CONSULTAR DADOS DA TABELA
 router.get('/',async(req, res)=>{
-    const resultado = await sessao.findAll({include:departamento}) // o include\: departamento é como o sequelize faz para poder realizar consultas com join
+    const resultado = await sessao.findAll({include:filme}) // o include\: filmes é como o sequelize faz para poder realizar consultas com join
 
     if(resultado){  // if indica condição 
         console.log(resultado)
