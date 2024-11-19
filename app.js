@@ -1,5 +1,6 @@
 const express = require("express")
 const handlebars = require("express-handlebars")
+const path = require('path')
 
 const app = express()
 const porta = 3500
@@ -8,15 +9,20 @@ const porta = 3500
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
+// Configuração do CSS
+app.use(express.static(path.join(__dirname,'public')))
+
 //CONFIGURAR HANDLEBARS
 app.engine('handlebars',handlebars.engine({extended:true}))
 app.set('view engine', 'handlebars') // definindo o handlebars como mecanismo de visualização padrão.
 
 // CARREGAR AS PORTAS
-const cinemaRouter = require('./routes/filmes')
+const filmeRouter = require('./routes/filmes')
+const sessaoRouter = require('./routes/sessao')
 
 // UTILIZANDO AS ROTAS 
-app.use('/sessao',cinemaRouter)
+app.use('/filme',filmeRouter)
+app.use('/sessao',sessaoRouter)
 
 app.get('/',(req, res)=>{
     console.log('funcionando o servidor')

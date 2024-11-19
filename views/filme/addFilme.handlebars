@@ -1,14 +1,14 @@
 <section class="container">
-    <h1 class="text-center">Cadastro de Sessão</h1>
+    <h1 class="text-center">Cadastro de Filme</h1>
 
-    <form action="/sessao/store" method="post">
+    <form action="/filme/store" method="post">
 
         {{!--2º Campo: Título --}}
         <section>
-                <div class="form-floating mb-3">
-                <input type="titulo" class="form-control" name="titulo" id="titulo" placeholder="name@example.com">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="name@example.com" required>
                 <label for="floatingInput">Título do filme</label>
-        </div>
+            </div>
         </section>
 
         {{!-- 3º Campo: Selecionar Gênero --}}
@@ -21,9 +21,16 @@
                 <option value="acao">Ação</option>
                 <option value="comedia">Comédia</option>
                 <option value="ficcao-científica">Ficção científica</option>
-                
-                
             </select>
+        </section>
+
+        {{! 5º Campo: Selecionar Duração}}
+        <section class="my-3">
+            <div class="form-floating mb-4">
+                <input type="text" class="form-control" id="duracao" name="duracao" placeholder="name@example.com"
+                    required>
+                <label for="floatingInput">Duração do filme</label>
+            </div>
         </section>
 
         {{!-- 4º Campo: Selecionar Classificação indicada --}}
@@ -35,37 +42,11 @@
                 <option value="1">Não recomendado para menores de 10 anos</option>
                 <option value="2">Não recomendado para menores de 14 anos</option>
                 <option value="3">Não recomendado para menores de 18 anos</option>
-                
-                
+
+
             </select>
         </section>
 
-        {{! 5º Campo: Selecionar Duração}}
-        <section class="my-3">
-                <div class="form-floating mb-4">
-                <input type="number" class="form-control" id="duracao" name="duracao" placeholder="name@example.com" required>
-                <label for="floatingInput">Duração do filme</label>
-        </div>
-        </section>
-
-        <section class="my-3">
-                <div class="form-floating mb-4">
-                <input type="text" class="form-control" id="data" name="data" placeholder="name@example.com" required>
-                <label for="floatingInput">Data do filme</label>
-        </div>
-        </section>
-
-                {{!-- 4º Campo: Selecionar Classificação indicada --}}
-        <section class="my-3">
-            <label for="filme">Escolha o filme:</label>
-            <select name="filme" id="filme" class="form-select" required>
-                <option value="">Escolha uma opção</option>
-                {{#each dados}}
-                <option value="{{dataValues.id}}">{{dataValues.nome}}</option>
-                
-                {{/each}}
-            </select>
-        </section>
 
         {{!-- 6 º Campo: Botão de Cadastrar --}}
         <section class="mb-2 d-flex justify-content-end">
