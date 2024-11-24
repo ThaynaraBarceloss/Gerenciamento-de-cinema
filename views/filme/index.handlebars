@@ -1,39 +1,34 @@
-<section class="container">
-    <section class="d-flex justify-content-between">
-        <h2>Filmes Disponíveis</h2>
-        <a href="/filme/create" class="btn btn-primary">Cadastrar Novo Filme</a>
+<section class="container my-5">
+        <section>
+        <section class="d-flex justify-content-between">
+            <h2 class="text-white">Filmes Disponíveis</h2>
+            <a href="/filme/create" class="btn btn-cadastro py-3 text-white">Cadastrar Novo Filme</a>
+        </section>
     </section>
-</section>
 
-<hr/>
+    <hr style="color: aliceblue;"/>
 
-<section class="my-4 container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>titulo</th>
-                <th>Gênero</th>
-                <th>Duração</th>
-                <th>Classificação</th>
-                <th>ação</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{!-- O each é um recurso do Handlebars que permite que tags sejam repetidas, ele funciona como uma estrutura de repetição --}}
-            {{#each dados}}
-            <tr>
-                <td>{{dataValues.id}}</td>
-                <td>{{dataValues.titulo}}</td>
-                <td>{{dataValues.genero}}</td>
-                <td>{{dataValues.duracao}}</td>
-                <td>{{dataValues.classificacao}}</td>
-                <td>
-                    <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{dataValues.id}}">Excluir</a>
-                </td>
-            </tr>
-            {{>modalDelete idItem = dataValues.id}}
+    <section class="my-4 container">
+        <section>
+            <section class="p-0 d-flex">
+                {{#each dados}}
+                <div class="d-flex flex-column mx-2 my-2">
+                    <div class="card box-shadow-box" style="width: 13rem; background-color: #1a1815; border:none">
+                        <img src="logo_com_fundo.png" class="card-img-top card-sessao bd-radius" alt="">
+                    </div>
+                    <div class="card-body my-3 text-white box-shadow-box bgc-dark py-2 px-2 bd-radius" style="width: 13rem;">
+                        <p class="card-title font-12 font-text">Título: {{dataValues.titulo}}</p>
+                        <p class="card-text font-12 font-text">Duração: {{dataValues.duracao}}</p>
+                        <p class="card-text font-12 font-text">Gênero: {{dataValues.genero}}</p>
+                        <p class="card-text font-12 font-text">Classificação: {{dataValues.classificacao}}</p>
+                        <div class="justify-content-center">
+                            <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{dataValues.id}}">Excluir</a>
+                        </div>
+                    </div>
+                </div>
+                {{>modalDelete idItem=dataValues.id}}
             {{/each}}
-        </tbody>
-    </table>
-</section>
+        </section>
+        </section>
+    </section>
+</section> 

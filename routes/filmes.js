@@ -16,7 +16,7 @@ router.post('/store',async(req, res)=>{
     })
 
     if(resultado){
-        res.redirect('/')
+        res.redirect('/filme')
     }
     else(
         res.json({erro:"Os dados não foram cadastrados no banco"})
@@ -59,7 +59,7 @@ router.get('/destroy/:id',async(req, res)=>{
             id:req.params.id // estamos recebendo o id via parâmetro que está sendo passado na rota, no caso,é o id que estamos recebendo
         }
     })
-    res.redirect('/')
+    res.redirect('/filme')
 })
 
 module.exports = router

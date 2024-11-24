@@ -1,57 +1,80 @@
-<section class="container">
-    <h1 class="text-center">Cadastro de Filme</h1>
+<section class="container width mt-5 py-5 px-3 box-shadow">
+    <div class="d-flex justify-content-between px-2">
+        <h1 class="text-center fs-2 text-white text-center">Cadastro de Filmes</h1>
+        <a href="/filme"><i class="fa-solid fa-right-from-bracket text-white fs-4 py-1justify-content-end"></i></a>
+    </div>
 
     <form action="/filme/store" method="post">
 
-        {{!--2º Campo: Título --}}
-        <section>
+        {{!--1º Campo: Título --}}
+        <section class="mt-5">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="name@example.com" required>
-                <label for="floatingInput">Título do filme</label>
+                <input type="text" class="form-control"  name="titulo" id="titulo" placeholder="name@example.com" required>
+                <label for="floatingInput">Título do filme*</label>
             </div>
         </section>
 
-        {{!-- 3º Campo: Selecionar Gênero --}}
+        {{!-- 2º Campo: Selecionar Gênero --}}
         <section class="my-3">
-            <label for="genero">Escolha o gênero:</label>
-            <select name="genero" id="genero" class="form-select" required>
-                <option value="">Escolha uma opção</option>
-                <option value="romance">Romance</option>
-                <option value="terror">Terror</option>
-                <option value="acao">Ação</option>
-                <option value="comedia">Comédia</option>
-                <option value="ficcao-científica">Ficção científica</option>
+            <select name="genero" id="genero" class="form-select py-4 px-2" required>
+                <option value="">Escolha o gênero*</option>
+                <option value="Romance">Romance</option>
+                <option value="Terror">Terror</option>
+                <option value="Ação">Ação</option>
+                <option value="Comédia">Comédia</option>
+                <option value="Ficção Científica">Ficção científica</option>
             </select>
         </section>
 
-        {{! 5º Campo: Selecionar Duração}}
+        {{! 3º Campo: Selecionar Duração}}
         <section class="my-3">
             <div class="form-floating mb-4">
                 <input type="text" class="form-control" id="duracao" name="duracao" placeholder="name@example.com"
                     required>
-                <label for="floatingInput">Duração do filme</label>
+                <label for="floatingInput">Duração do filme*</label>
             </div>
         </section>
 
         {{!-- 4º Campo: Selecionar Classificação indicada --}}
         <section class="my-3">
-            <label for="classificacao">Escolha a classificação:</label>
-            <select name="classificacao" id="classificacao" class="form-select" required>
-                <option value="">Escolha uma opção</option>
-                <option value="0">Livre</option>
-                <option value="1">Não recomendado para menores de 10 anos</option>
-                <option value="2">Não recomendado para menores de 14 anos</option>
-                <option value="3">Não recomendado para menores de 18 anos</option>
+            <select name="classificacao" id="classificacao" class="form-select py-4" required>
+                <option value="">Escolha a classificação*</option>
+                <option class="hover-orange" value="Livre">Livre</option>
+                <option class="hover-orange" value="10 anos">Não recomendado para menores de 10 anos</option>
+                <option class="hover-orange" value="14 anos">Não recomendado para menores de 14 anos</option>
+                <option class="hover-orange" value="18 anos">Não recomendado para menores de 18 anos</option>
 
 
             </select>
         </section>
 
 
-        {{!-- 6 º Campo: Botão de Cadastrar --}}
-        <section class="mb-2 d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        {{!-- 5 º Campo: Botão de Cadastrar --}}
+        <section class="mb-2 d-flex justify-content-center my-5">
+            <button type="submit" class="btn btn-cadastro py-2 px-4">Cadastrar</button>
         </section>
 
     </form>
+</section>
+
+<section class="mx-5 container">
+    <h1 class="text-white fs-2">Filmes Cadastrados</h1>
+    <section class="my-4 container">
+        <section>
+            <section class="p-0 d-flex">
+                {{#each dados}}
+                <div class="d-flex flex-column mx-2 my-2">
+                    <div class="card box-shadow-box" style="width: 13rem; background-color: #1a1815; border:none">
+                        <img src="/logo_com_fundo.png" class="card-img-top card-sessao bd-radius" alt="">
+                    </div>
+                    <div class="card-body my-3 text-white box-shadow-box bgc-dark py-2 px-2 bd-radius" style="width: 13rem;">
+                        <p class="card-title font-12 font-text">Título: {{dataValues.titulo}}</p>
+                        <p class="card-text font-12 font-text">Duração: {{dataValues.duracao}}</p>
+                        <p class="card-text font-12 font-text">Classificação: {{dataValues.classificacao}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        </section>
+        </section>
+    </section>
 </section>

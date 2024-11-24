@@ -6,8 +6,12 @@ const filme = require('./filme')
 const sessao = sequelizeConfig.define(
     'sessao',
     {
-        data:{type:sequelizeDb.DATE},
-        horario: {type:sequelizeDb.TIME}
+        data:{
+            type:sequelizeDb.DATE
+        },
+        horario: {
+            type:sequelizeDb.TIME
+        }
     }
 )
 

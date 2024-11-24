@@ -1,13 +1,14 @@
 <section class="container">
+    <section class="container my-5">
     <section class="d-flex justify-content-between">
-        <h2>Row de Sessões</h2>
-        <a href="/sessao/create" class="btn btn-primary">Cadastrar Nova Sessão</a>
+        <h2 class="text-white">Sessões Disponíveis</h2>
+        <a href="/sessao/create" class="btn btn-cadastro py-3">Cadastrar Nova Sessão</a>
     </section>
 </section>
 
-<hr/>
+<hr style="color: aliceblue;"/>
 
-<section class="my-4 container">
+{{!-- <section class="my-4 container">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,7 +23,6 @@
             </tr>
         </thead>
         <tbody>
-            {{!-- O each é um recurso do Handlebars que permite que tags sejam repetidas, ele funciona como uma estrutura de repetição --}}
             {{#each dados}}
             <tr>
                 <td>{{dataValues.id}}</td>
@@ -36,8 +36,26 @@
                     <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{dataValues.id}}">Excluir</a>
                 </td>
             </tr>
-            {{>modalDelete idItem = dataValues.id}}
+            {{>modalDelete idItem=dataValues.id}}
             {{/each}}
         </tbody>
     </table>
+</section> --}}
+<section class="row">
+    <section class="col-md-4">
+        <div class="card" style="width: 18rem; height: 40vh">
+            <img src="logo_com_fundo.png" class="card-img-top card-sessao" alt="">
+
+            {{#each dados}}
+                <div class="card-body">
+                            <h5 class="card-text">Filme: {{filme.dataValues.nome}}</h5>
+                            <h5 class="card-text">Data: {{dataValues.data}}</h5>
+                            <h5 class="card-text">Horario: {{dataValues.horario}}</h5>
+                        </div>
+                    </div>
+                </div>
+            {{>modalDelete idItem=dataValues.id}}
+            {{/each}}
+        </section>
+</section>
 </section>

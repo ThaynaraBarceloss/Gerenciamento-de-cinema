@@ -1,76 +1,32 @@
-<section class="container">
-    <h1 class="text-center">Cadastro de Sessão</h1>
-
-    <form action="/sessao/store" method="post">
-
-        {{!--2º Campo: Título --}}
-        <section>
-                <div class="form-floating mb-3">
-                <input type="titulo" class="form-control" name="titulo" id="titulo" placeholder="name@example.com">
-                <label for="floatingInput">Título do filme</label>
-        </div>
+<section class="container width mt-5 py-5 px-3 box-shadow">
+    <div class="d-flex justify-content-between px-2">
+        <h1 class="text-center fs-2 text-white text-center">Cadastro de Sessão</h1>
+        <a href="/sessao"><i class="fa-solid fa-right-from-bracket text-white fs-4 py-1justify-content-end"></i></a>
+    </div>
+      <form action="/sessao/store" method="post">
+        {{!-- Campo 1: Nome --}}
+        <section class="mb-2">
+            <label for="data">Data do Filme </label>
+            <input type="date" name="data" id="data" class="form-control" required>
         </section>
 
-        {{!-- 3º Campo: Selecionar Gênero --}}
-        <section class="my-3">
-            <label for="genero">Escolha o gênero:</label>
-            <select name="genero" id="genero" class="form-select" required>
-                <option value="">Escolha uma opção</option>
-                <option value="romance">Romance</option>
-                <option value="terror">Terror</option>
-                <option value="acao">Ação</option>
-                <option value="comedia">Comédia</option>
-                <option value="ficcao-científica">Ficção científica</option>
-                
-                
-            </select>
+        <section class="mb-2">
+            <label for="horario">Horário do filme</label>
+            <input type="time" name="horario" id="horario" class="form-control" required>
         </section>
-
-        {{!-- 4º Campo: Selecionar Classificação indicada --}}
-        <section class="my-3">
-            <label for="classificacao">Escolha a classificação:</label>
-            <select name="classificacao" id="classificacao" class="form-select" required>
-                <option value="">Escolha uma opção</option>
-                <option value="0">Livre</option>
-                <option value="1">Não recomendado para menores de 10 anos</option>
-                <option value="2">Não recomendado para menores de 14 anos</option>
-                <option value="3">Não recomendado para menores de 18 anos</option>
-                
-                
-            </select>
-        </section>
-
-        {{! 5º Campo: Selecionar Duração}}
-        <section class="my-3">
-                <div class="form-floating mb-4">
-                <input type="number" class="form-control" id="duracao" name="duracao" placeholder="name@example.com" required>
-                <label for="floatingInput">Duração do filme</label>
-        </div>
-        </section>
-
-        <section class="my-3">
-                <div class="form-floating mb-4">
-                <input type="text" class="form-control" id="data" name="data" placeholder="name@example.com" required>
-                <label for="floatingInput">Data do filme</label>
-        </div>
-        </section>
-
-                {{!-- 4º Campo: Selecionar Classificação indicada --}}
-        <section class="my-3">
-            <label for="filme">Escolha o filme:</label>
-            <select name="filme" id="filme" class="form-select" required>
-                <option value="">Escolha uma opção</option>
+        {{!-- CAMPO 3 - SELECIONAR CÓDIGO DO DEPARTAMENTO --}}
+        <section class="mb-2">
+            <select name="sessao" id="sessao" class="form-select" required>
+                <option value="">Escolha o filme</option>
                 {{#each dados}}
-                <option value="{{dataValues.id}}">{{dataValues.nome}}</option>
-                
+                <option value="{{dataValues.id}}">{{dataValues.titulo}}</option>
                 {{/each}}
             </select>
         </section>
 
-        {{!-- 6 º Campo: Botão de Cadastrar --}}
+        {{!-- CAMPO 4: BOTÃO DE CADASTRAR --}}
         <section class="mb-2 d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button class="btn btn-cadastro" type="submit">Cadastrar</button>
         </section>
-
     </form>
 </section>
